@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import{connect} from 'react-redux';
 import LineChart from "../../shared/LineChart";
 import AppContainer from "../AppContainer/AppContainer";
 import AppHeader from "../AppHeader";
@@ -8,8 +9,11 @@ import productsMock from "../../mocks/products.json";
 import extractPercentage from "../../utils/extractPercentage";
 import Calculator from "./../../components/Calculator";
 
-function App() {
+
+function App({productsRedux}) {
   const colors = ["#62CBC6", "#00ABAD", "#00858C", "#006073", "#004D61"];
+
+  console.log("Products in App ",productsRedux)
 
   const [products, setProducts] = useState(productsMock.products);
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -119,4 +123,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+  return{
+    productsRedux: state.products
+  }
+}
+
+export default connect(mapStateToProps)(App)
+

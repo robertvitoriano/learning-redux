@@ -8,7 +8,7 @@ function ShoppingList ({ title, products, onToggle,productsFromRedux }) {
   console.log("sem hooks",productsFromRedux)
   const reduxProducts = useSelector(state=>state.products)
   console.log("Com hooks:",reduxProducts)
-  selectAllProducts
+  // selectAllProducts
   // console.log("select modularizado:", useSelector(selectAllProducts));
 
   return <Wrapper>
