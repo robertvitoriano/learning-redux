@@ -2,7 +2,7 @@
 
   switch(action.type){
     case 'SUM':
-      return (Number(action.payload[0]) + Number(action.payload[1]))
+      return action.payload[0] + action.payload[1]
       case 'SUBTRACT':
         return action.payload[0] - action.payload[1]
     default: 

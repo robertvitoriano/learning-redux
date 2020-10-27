@@ -10,10 +10,10 @@ const Calculator = ({ result, dispatch }) => {
 
   return (
     <>
-      <input type="text" placeholder="a" value = {a} onChange={e=>setA(e.target.value)}/>
-      <input type="text" placeholder="b" value = {b} onChange={e=>setB(e.target.value)}/>
+      <input type="text" placeholder="a" value = {a} onChange={e=>setA(Number(e.target.value))}/>
+      <input type="text" placeholder="b" value = {b} onChange={e=>setB(Number(e.target.value))}/>
       <button onClick={e=>dispatch(sum(a,b))}>Somar</button>
-      <button onClick={e=>dispatch(subtract(a,b))}>Subtrair</button>
+      <button onClick={e=>dispatch(subtract((a,b)))}>Subtrair</button>
       <div>
         <h2>Resultado: {result}</h2>
       </div>
