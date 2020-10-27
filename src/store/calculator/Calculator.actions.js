@@ -6,3 +6,11 @@ export function sum (a,b){
     payload:[a,b]
   }
 }
+
+export function subtract (a,b){
+  // action
+  return {
+    type:'SUBTRACT',
+    payload:[a,b]
+  }
+}
