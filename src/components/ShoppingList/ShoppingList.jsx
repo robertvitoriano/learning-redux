@@ -1,15 +1,23 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { connect,useSelector } from "react-redux";
 import { Wrapper, Title, Array } from './ShoppingList.styles'
 import Checkbox from '../../shared/Checkbox'
 import { selectAllProducts } from '../../store/Products/Products.selectors';
 
 function ShoppingList ({ title, products, onToggle,productsFromRedux }) {
-  console.log("sem hooks",productsFromRedux)
-  const reduxProducts = useSelector(state=>state.products)
-  console.log("Com hooks:",reduxProducts)
-  // selectAllProducts
-  // console.log("select modularizado:", useSelector(selectAllProducts));
+  // const reduxProducts = useSelector(state=>state.products)
+  // const productsFromSelect = useSelector(selectAllProducts)
+
+
+  useEffect(()=>{
+  //   console.log("sem hooks",productsFromRedux)
+  // console.log("Com hooks:",reduxProducts)
+  //  console.log("select modularizado:", productsFromSelect);
+
+
+  },[])
+
+
 
   return <Wrapper>
     <Title>
