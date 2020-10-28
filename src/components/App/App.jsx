@@ -15,8 +15,7 @@ function App({products,dispatch}) {
 
   const selectedProducts = useSelector(selectSelectedProducts)
   const totalPrice  = useSelector(selectedProductsTotalPrice)
-
-
+  
   function handleToggle(id) {
     dispatch(toggleProduct(id))
   }
@@ -29,15 +28,14 @@ function App({products,dispatch}) {
           left={
             <ShoppingList
               title="Produtos disponíveis"
-              products={products}
               onToggle={handleToggle}
             />
           }
           middle={
             <ShoppingList
               title="Sua lista de compras"
-              products={selectedProducts}
               onToggle={handleToggle}
+              displayOnlySelected = {true}
             />
           }
           right={

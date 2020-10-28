@@ -2,22 +2,13 @@ import React,{useEffect} from 'react'
 import { connect,useSelector } from "react-redux";
 import { Wrapper, Title, Array } from './ShoppingList.styles'
 import Checkbox from '../../shared/Checkbox'
-import { selectAllProducts } from '../../store/Products/Products.selectors';
+import { selectAllProducts,selectSelectedProducts } from '../../store/Products/Products.selectors';
+import {toggleProduct} from '../../store/Products/Products.actions'
 
-function ShoppingList ({ title, products, onToggle,productsFromRedux }) {
-  // const reduxProducts = useSelector(state=>state.products)
-  // const productsFromSelect = useSelector(selectAllProducts)
+function ShoppingList ({ title,dispatch,displayOnlySelected  }) {
+  console.log(displayOnlySelected )
 
-
-  useEffect(()=>{
-  //   console.log("sem hooks",productsFromRedux)
-  // console.log("Com hooks:",reduxProducts)
-  //  console.log("select modularizado:", productsFromSelect);
-
-
-  },[])
-
-
+  const  products = useSelector(displayOnlySelected  ? selectSelectedProducts:selectAllProducts)
 
   return <Wrapper>
     <Title>
@@ -30,8 +21,7 @@ function ShoppingList ({ title, products, onToggle,productsFromRedux }) {
             key={product.id}
             value={product.checked}
             title={product.name}
-            onClick={() => onToggle(product.id, product.checked, product.name)}
-          />
+            onClick={() =>dispatch(toggleProduct(product.id))}/>
         )
       }
     </Array>
@@ -39,7 +29,7 @@ function ShoppingList ({ title, products, onToggle,productsFromRedux }) {
 }
 
 const mapStateToProps = (state) =>{
-  return{productsFromRedux:state.products}
+  return{products:state.products}
 
 }
 export default connect(mapStateToProps)(ShoppingList)

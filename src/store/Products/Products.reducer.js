@@ -6,9 +6,6 @@ export default function (state=productsMock.products,action){
       return state.map((product) =>
       product.id === action.payload ? { ...product, checked: !product.checked } : product)
       
-
-
-
     default:
       return state
   }
